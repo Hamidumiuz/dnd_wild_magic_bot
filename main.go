@@ -28,7 +28,22 @@ func main() {
 	if err != nil {
 		log.Fatalf("bot init failed: %v", err)
 	}
-	b.RegisterHandler(bot.HandlerTypeMessageText, "/chaos", bot.MatchTypeExact, rollHandler)
+	b.RegisterHandlerMatchFunc(
+		func(update *models.Update) bool {
+			if update.Message == nil {
+				return false
+			}
+			switch update.Message.Chat.Type {
+			case models.ChatTypePrivate:
+				return update.Message.Text == "/chaos"
+			case models.ChatTypeGroup, models.ChatTypeSupergroup, models.ChatTypeChannel:
+				return update.Message.Text == "/chaos@dnd_wild_magic_bot"
+			default:
+				return false
+			}
+		},
+		rollHandler,
+	)
 
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer cancel()
@@ -38,18 +53,12 @@ func main() {
 }
 
 func rollHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
-	msg := update.Message
-	log.Printf("%#v", msg)
-	if msg == nil {
-		return
-	}
-
 	// Бросок кубиков и поиск результата
 	roll := rollDice(1, 100)
 	result := wildMagicTable.Find(roll)
 
 	b.SendMessage(ctx, &bot.SendMessageParams{
-		ChatID:    msg.Chat.ID,
+		ChatID:    update.Message.Chat.ID,
 		Text:      fmt.Sprintf("Бросок к100: %d\n%s", roll, result),
 		ParseMode: models.ParseModeMarkdownV1,
 	})
