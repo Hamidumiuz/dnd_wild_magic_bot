@@ -23,13 +23,12 @@ func main() {
 	}
 
 	// Создаем бота
-	opts := []bot.Option{
-		bot.WithDefaultHandler(handler),
-	}
+	opts := []bot.Option{}
 	b, err := bot.New(token, opts...)
 	if err != nil {
 		log.Fatalf("bot init failed: %v", err)
 	}
+	b.RegisterHandler(bot.HandlerTypeMessageText, "/chaos", bot.MatchTypeExact, rollHandler)
 
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer cancel()
@@ -38,14 +37,8 @@ func main() {
 	b.Start(ctx)
 }
 
-func handler(ctx context.Context, b *bot.Bot, update *models.Update) {
+func rollHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 	msg := update.Message
-	if msg == nil {
-		return
-	}
-	if !strings.HasPrefix(msg.Text, "@dnd_wild_magic_bot") {
-		return
-	}
 
 	// Бросок кубиков и поиск результата
 	roll := rollDice(1, 100)
