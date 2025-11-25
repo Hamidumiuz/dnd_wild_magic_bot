@@ -201,7 +201,7 @@ var effects_57_60 = []string{
 	"[Левитация](https://next.dnd.su/spells/10560-levitate/) (цель - вы)",
 	"[Волшебная стрела](https://next.dnd.su/spells/10567-magic-missile/) (сотворяется как заклинание 5-го уровня)",
 	"[Отражения](https://next.dnd.su/spells/10584-mirror-image/)",
-	"[Превращение](https://next.dnd.su/spells/10604-polymorph/) (цель - вы; провалив спасбросок, вы превратитесь в Козла)",
+	"[Превращение](https://next.dnd.su/spells/10604-polymorph/) (цель - вы; провалив спасбросок, вы превратитесь в [Козла](https://next.dnd.su/bestiary/21365-goat/))",
 	"[Видение невидимого](https://next.dnd.su/spells/10632-see-invisibility/)",
 }
 
