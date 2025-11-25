@@ -237,6 +237,6 @@ var effects_97_100 = []func() string{
 		return "вы восстанавливаете все Очки чародейства"
 	},
 	func() string {
-		return strings.Join(effects_17_20, "; ")
+		return strings.Join(effects_17_20, "\n")
 	},
 }
