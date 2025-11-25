@@ -39,16 +39,11 @@ func main() {
 }
 
 func handler(ctx context.Context, b *bot.Bot, update *models.Update) {
-	if update.Message == nil {
+	msg := update.Message
+	if msg == nil {
 		return
 	}
-
-	// Обработка команды /start
-	if update.Message.Text == "/start" {
-		b.SendMessage(ctx, &bot.SendMessageParams{
-			ChatID: update.Message.Chat.ID,
-			Text:   "Икбол будет забанен)))",
-		})
+	if !strings.HasPrefix(msg.Text, "@dnd_wild_magic_bot") {
 		return
 	}
 
@@ -57,7 +52,7 @@ func handler(ctx context.Context, b *bot.Bot, update *models.Update) {
 	result := wildMagicTable.Find(roll)
 
 	b.SendMessage(ctx, &bot.SendMessageParams{
-		ChatID:    update.Message.Chat.ID,
+		ChatID:    msg.Chat.ID,
 		Text:      fmt.Sprintf("Бросок к100: %d\n%s", roll, result),
 		ParseMode: models.ParseModeMarkdownV1,
 	})
