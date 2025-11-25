@@ -1,4 +1,6 @@
 .history/
 .vscode/
 
+.env
+
 dnd_wild_magic_bot
