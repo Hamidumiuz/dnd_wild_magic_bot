@@ -196,12 +196,12 @@ var effects_57_60 = []string{
 	"[Смятение](https://next.dnd.su/spells/10203-confusion/)",
 	"[Огненный шар](https://next.dnd.su/spells/10514-fireball/)",
 	"[Туманное облако](https://next.dnd.su/spells/10283-fog-cloud/)",
-	"[Полёт](https://next.dnd.su/spells/10518-fly/)",
+	"[Полёт](https://next.dnd.su/spells/10518-fly/) (цель — случайное существо в пределах 60 футов от вас)",
 	"[Намасливание](https://next.dnd.su/spells/10532-grease/)",
-	"[Левитация](https://next.dnd.su/spells/10560-levitate/)",
-	"[Волшебная стрела](https://next.dnd.su/spells/10567-magic-missile/)",
+	"[Левитация](https://next.dnd.su/spells/10560-levitate/) (цель - вы)",
+	"[Волшебная стрела](https://next.dnd.su/spells/10567-magic-missile/) (сотворяется как заклинание 5-го уровня)",
 	"[Отражения](https://next.dnd.su/spells/10584-mirror-image/)",
-	"[Превращение](https://next.dnd.su/spells/10604-polymorph/)",
+	"[Превращение](https://next.dnd.su/spells/10604-polymorph/) (цель - вы; провалив спасбросок, вы превратитесь в Козла)",
 	"[Видение невидимого](https://next.dnd.su/spells/10632-see-invisibility/)",
 }
 
