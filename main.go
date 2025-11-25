@@ -39,6 +39,10 @@ func main() {
 
 func rollHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 	msg := update.Message
+	log.Printf("%#v", msg)
+	if msg == nil {
+		return
+	}
 
 	// Бросок кубиков и поиск результата
 	roll := rollDice(1, 100)
